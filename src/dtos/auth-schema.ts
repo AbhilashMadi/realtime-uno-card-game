@@ -66,21 +66,21 @@ export type LoginInput = z.infer<typeof loginDTOSchema>;
 // --- JSON Schema for Docs ---
 export const AuthRouteSchemas = {
 	registerSchema: {
-		summary: 'Register a new user',
-		tags: ['auth'],
+		summary: "Register a new user",
+		tags: ["auth"],
 		body: zodToJsonSchema(registerDTOSchema),
 	},
 	loginSchema: {
-		summary: 'User login',
-		tags: ['auth'],
+		summary: "User login",
+		tags: ["auth"],
 		body: zodToJsonSchema(loginDTOSchema),
 	},
 	logoutSchema: {
-		summary: 'User logout',
-		tags: ['auth'],
+		summary: "User logout",
+		tags: ["auth"],
 	},
 	meSchema: {
 		summary: "Get user",
-		tags: ['auth'],
-	}
+		tags: ["auth"],
+	},
 };
