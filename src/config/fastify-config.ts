@@ -6,6 +6,7 @@ import {
 	cookiePlugin,
 	corsPlugin,
 	dbPlugin,
+	docsPlugin,
 	helmetPlugin,
 	responsePlugin,
 	socketIoPlugin,
@@ -15,6 +16,9 @@ export default async function createFastifyServer(): Promise<FastifyInstance> {
 	const app = Fastify({
 		logger: loggerConfig[envConfig.NODE_ENV],
 	});
+
+	// Register fastify scalar docs
+	await app.register(docsPlugin);
 
 	// Register core plugins
 	await app.register(corsPlugin);
