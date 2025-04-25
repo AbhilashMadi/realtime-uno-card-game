@@ -37,7 +37,7 @@ jobs:
       - name: Install pnpm
         run: npm install -g pnpm
 
-      # Install dependencies (backend and frontend)
+      # Install dependencies
       - name: Install dependencies (backend and frontend)
         run: |
           if [ "${{ matrix.environment }}" == "backend" ]; then
@@ -71,10 +71,10 @@ jobs:
         uses: actions/checkout@v2
 
       # Set up Node.js
-      - name: Set up Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 23.x
+          node-version: 22.x
           cache: 'pnpm'
 
       # Install pnpm
@@ -103,7 +103,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 23.x
+          node-version: 22.x
           cache: 'pnpm'
 
       # Install pnpm
