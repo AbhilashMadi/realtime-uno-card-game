@@ -1,0 +1,142 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+        include:
+          - node-version: 22.x
+            environment: 'backend'
+          - node-version: 22.x
+            environment: 'frontend'
+
+    steps:
+      # Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Node.js
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      # Install pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # Install dependencies (backend and frontend)
+      - name: Install dependencies (backend and frontend)
+        run: |
+          if [ "${{ matrix.environment }}" == "backend" ]; then
+            cd backend && pnpm install;
+          elif [ "${{ matrix.environment }}" == "frontend" ]; then
+            cd frontend && pnpm install;
+          fi
+
+      # Run backend build and tests
+      - name: Build and Test (backend)
+        if: ${{ matrix.environment == 'backend' }}
+        run: |
+          cd backend
+          pnpm run build
+          pnpm run test
+
+      # Run frontend build and tests
+      - name: Build and Test (frontend)
+        if: ${{ matrix.environment == 'frontend' }}
+        run: |
+          cd frontend
+          pnpm run build
+          pnpm run test
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Node.js
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 23.x
+          cache: 'pnpm'
+
+      # Install pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # Install dependencies
+      - name: Install dependencies
+        run: pnpm install
+
+      # Run linting (biome)
+      - name: Lint code with Biome
+        run: pnpm run biome
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      # Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 23.x
+          cache: 'pnpm'
+
+      # Install pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # Install dependencies
+      - name: Install dependencies
+        run: pnpm install
+
+      # Build for production (backend)
+      - name: Build production backend
+        run: |
+          cd backend
+          pnpm run build
+
+      # Deploy backend (to your hosting service, e.g., Heroku, AWS, etc.)
+      - name: Deploy backend
+        run: |
+          cd backend
+          # Deployment command (example for Heroku)
+          git remote add heroku https://git.heroku.com/your-app.git
+          git push heroku main
+
+      # Build frontend (React)
+      - name: Build production frontend
+        run: |
+          cd frontend
+          pnpm run build
+
+      # Deploy frontend (e.g., Netlify, Vercel, etc.)
+      - name: Deploy frontend
+        run: |
+          cd frontend
+          # Deployment command (example for Vercel)
+          vercel --prod --token=$VERCEL_TOKEN
