@@ -17,13 +17,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22.x
-          cache: 'pnpm'
+          node-version: 22
 
-      - name: Enable Corepack and pnpm
-        run: |
-          corepack enable
-          echo "✅ pnpm version: $(pnpm -v)"
+      - name: Install pnpm globally
+        run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
@@ -32,7 +29,7 @@ jobs:
         run: pnpm run build
 
       - name: Run tests (if available)
-        run: pnpm run test || echo "✅ No tests found or skipped."
+        run: pnpm run test || echo "No tests found or skipped."
 
 
   lint:
@@ -45,18 +42,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22.x
-          cache: 'pnpm'
+          node-version: 22
 
-      - name: Enable Corepack and pnpm
-        run: |
-          corepack enable
-          echo "✅ pnpm version: $(pnpm -v)"
+      - name: Install pnpm globally
+        run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Lint code with Biome
+      - name: Lint with Biome
         run: pnpm run biome
 
 
@@ -72,13 +66,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22.x
-          cache: 'pnpm'
+          node-version: 22
 
-      - name: Enable Corepack and pnpm
-        run: |
-          corepack enable
-          echo "✅ pnpm version: $(pnpm -v)"
+      - name: Install pnpm globally
+        run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
@@ -87,4 +78,4 @@ jobs:
         run: pnpm run build
 
       - name: Deploy
-        run: echo "🚀 Add your deployment steps here"
+        run: echo "Add deployment steps here (e.g., rsync, ssh, docker login/push, etc.)"
