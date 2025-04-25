@@ -2,11 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   build:
@@ -22,8 +20,10 @@ jobs:
           node-version: 22.x
           cache: 'pnpm'
 
-      - name: Install pnpm globally
-        run: npm install -g pnpm@10.9.0
+      - name: Enable Corepack and pnpm
+        run: |
+          corepack enable
+          echo "✅ pnpm version: $(pnpm -v)"
 
       - name: Install dependencies
         run: pnpm install
@@ -33,6 +33,7 @@ jobs:
 
       - name: Run tests (if available)
         run: pnpm run test || echo "✅ No tests found or skipped."
+
 
   lint:
     runs-on: ubuntu-latest
@@ -47,14 +48,17 @@ jobs:
           node-version: 22.x
           cache: 'pnpm'
 
-      - name: Install pnpm globally
-        run: npm install -g pnpm@10.9.0
+      - name: Enable Corepack and pnpm
+        run: |
+          corepack enable
+          echo "✅ pnpm version: $(pnpm -v)"
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Lint code with Biome
         run: pnpm run biome
+
 
   deploy:
     runs-on: ubuntu-latest
@@ -71,8 +75,10 @@ jobs:
           node-version: 22.x
           cache: 'pnpm'
 
-      - name: Install pnpm globally
-        run: npm install -g pnpm@10.9.0
+      - name: Enable Corepack and pnpm
+        run: |
+          corepack enable
+          echo "✅ pnpm version: $(pnpm -v)"
 
       - name: Install dependencies
         run: pnpm install
@@ -81,4 +87,4 @@ jobs:
         run: pnpm run build
 
       - name: Deploy
-        run: echo "🚀 Add deployment steps here (e.g., scp, ssh, rsync, docker, etc.)"
+        run: echo "🚀 Add your deployment steps here"
