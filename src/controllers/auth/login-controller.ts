@@ -33,6 +33,7 @@ export default async function loginController(
 		user_id: (user._id as string).toString(),
 		user_agent: userAgent,
 		role: user.role,
+		username: user.username,
 	});
 
 	// 5. Set secure cookie

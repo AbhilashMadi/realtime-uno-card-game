@@ -11,19 +11,21 @@ import { CookieNames, JWT } from "@utils";
 export default async function authenticate(
 	request: FastifyRequest,
 	_reply: FastifyReply,
-	done: DoneFuncWithErrOrRes,
+	// done: (err: Error) => void,
 ) {
 	try {
 		// 1. Extract the signed auth cookie
-		const signedToken = request.cookies[CookieNames.AUTH_TOKEN];
+		const signedToken = request.cookies?.[CookieNames.AUTH_TOKEN];
 		if (!signedToken) {
 			throw new UnauthorizedException("Auth token not provided");
 		}
 
 		// 2. Unsign the cookie to verify Fastify cookie signature
 		const { value: token, valid } = request.unsignCookie(signedToken);
-		if (!valid) {
-			throw new UnauthorizedException("Cookie has been tampered with");
+		if (!valid || !token) {
+			throw new UnauthorizedException(
+				"Cookie has been tampered with or is invalid",
+			);
 		}
 
 		// 3. Verify JWT token using your utility (e.g., jose or jsonwebtoken)
@@ -41,11 +43,10 @@ export default async function authenticate(
 
 		// 5. Attach decoded payload to request
 		request.user = tokenPayload;
+		// done();
 	} catch (err) {
-		done(
-			new UnauthorizedException(
-				(err as { message: string }).message || "Authentication failed",
-			),
-		);
+		const errorMessage =
+			(err instanceof Error && err.message) || "Authentication failed";
+		throw new UnauthorizedException(errorMessage);
 	}
 }

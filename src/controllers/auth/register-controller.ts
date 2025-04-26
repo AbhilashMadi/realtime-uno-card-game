@@ -45,6 +45,7 @@ export default async function registerController(
 			user_id: (newUser._id as string).toString(),
 			user_agent: userAgent,
 			role: newUser.role,
+			username: newUser.username,
 		},
 		"1h",
 	);

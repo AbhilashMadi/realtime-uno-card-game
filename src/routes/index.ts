@@ -1,8 +1,19 @@
+import { authMiddleware } from "@middlewares";
 import type { FastifyInstance } from "fastify";
 import authRoutes from "./auth-routes.js";
-import protectedRoutes from "./protected-routes.js";
+import roomsRoutes from "./room-routes.js";
 
 export default function registerRoutes(app: FastifyInstance) {
+	// Public routes
 	app.register(authRoutes, { prefix: "/api/v1/auth" });
-	app.register(protectedRoutes, { prefix: "/api/v1/protected" });
+
+	// Protected routes (rooms)
+	app.register(
+		(app: FastifyInstance) => {
+			// --- Protect all the rooms endpoints ---
+			app.addHook("preHandler", authMiddleware);
+			app.register(roomsRoutes);
+		},
+		{ prefix: "/api/v1/rooms" },
+	);
 }

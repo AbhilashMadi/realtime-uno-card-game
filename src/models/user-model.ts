@@ -1,5 +1,4 @@
-import { UserRoles } from "@utils"; // Assume this is: export enum UserRoles { USER = 'user', ADMIN = 'admin' }
-import bcrypt from "bcryptjs";
+import { Bcrypt, UserRoles } from "@utils";
 import type { Document, Model } from "mongoose";
 import mongoose, { Schema } from "mongoose";
 
@@ -44,16 +43,15 @@ const UserSchema = new Schema<IUser>(
 // --- Hash password before saving ---
 UserSchema.pre<IUser>("save", async function (next) {
 	if (!this.isModified("password")) return next();
-	const salt = await bcrypt.genSalt(); // Default is 10 rounds
-	this.password = await bcrypt.hash(this.password, salt);
+	this.password = await Bcrypt.hashString(this.password);
 	next();
 });
 
-// --- Compare password method ---
+// --- Compare method ---
 UserSchema.methods.comparePassword = function (
 	password: string,
 ): Promise<boolean> {
-	return bcrypt.compare(password, this.password);
+	return Bcrypt.compareString(password, this.password);
 };
 
 // --- Mongoose Model ---

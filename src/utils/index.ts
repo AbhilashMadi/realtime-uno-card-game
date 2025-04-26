@@ -5,6 +5,10 @@ export { default as RegexPatterns } from "./regex-patterns.js";
 export { default as ErrorMessages } from "./error-messages.js";
 export { default as banner } from "./banner.js";
 export { default as UserRoles } from "./user-roles.js";
+export { default as RoomStatus } from "./room-status.js";
+export { default as RoomPermissions } from "./room-permissions.js";
+export { default as PlayerRoles } from "./player-roles.js";
 
 export * as Generators from "./generators.js";
 export * as JWT from "./jwt-utils.js";
+export * as Bcrypt from "./bcrypt-utils.js";
