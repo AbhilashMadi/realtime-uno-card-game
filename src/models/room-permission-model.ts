@@ -23,7 +23,20 @@ const RoomPermissionSchema = new Schema<IRoomPermission>(
 			default: [],
 		},
 	},
-	{ timestamps: true },
+	{
+		timestamps: true,
+		toJSON: {
+			transform: (_, ret) => {
+				ret.user_id = ret._id.toString();
+
+				ret.createdAt = undefined;
+				ret.updatedAt = undefined;
+				ret.__v = undefined;
+
+				return ret;
+			},
+		},
+	},
 );
 
-export default model("RoomPermission", RoomPermissionSchema);
+export default model("room_permission", RoomPermissionSchema);

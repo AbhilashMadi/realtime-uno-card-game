@@ -16,30 +16,30 @@ export const createRoomDTOSchema = z.object({
 	is_private: z.boolean().default(false),
 });
 
+// --- Get Room Details ---
+const roomIdParamSchema = z.object({
+	room_id: z.string({ required_error: ErrorMessages.required("Room ID") }),
+});
+
 // --- Room Join Schema ---
 export const joinRoomDTOSchema = z.object({
-	roomId: z
+	room_id: z
 		.string({ required_error: ErrorMessages.required("Room ID") })
 		.min(6, { message: "Invalid Room ID" }),
 });
 
 // --- Room Start Schema ---
 export const startRoomDTOSchema = z.object({
-	roomId: z
+	room_id: z
 		.string({ required_error: ErrorMessages.required("Room ID") })
 		.min(6, { message: "Invalid Room ID" }),
 });
 
 // --- Room Leave Schema ---
 export const leaveRoomDTOSchema = z.object({
-	roomId: z
+	room_id: z
 		.string({ required_error: ErrorMessages.required("Room ID") })
 		.min(6, { message: "Invalid Room ID" }),
-});
-
-// --- Get Room Details ---
-const roomIdParamSchema = z.object({
-	roomId: z.string({ required_error: ErrorMessages.required("Room ID") }),
 });
 
 // --- Type Inference ---
@@ -47,6 +47,7 @@ export type CreateRoomInput = z.infer<typeof createRoomDTOSchema>;
 export type JoinRoomInput = z.infer<typeof joinRoomDTOSchema>;
 export type StartRoomInput = z.infer<typeof startRoomDTOSchema>;
 export type LeaveRoomInput = z.infer<typeof leaveRoomDTOSchema>;
+export type GetRoomDetailsQuery = z.infer<typeof roomIdParamSchema>;
 
 // --- JSON Schema for Swagger/Docs ---
 export const RoomRouteSchemas = {
@@ -54,6 +55,11 @@ export const RoomRouteSchemas = {
 		summary: "Create a game room",
 		tags: ["rooms"],
 		body: zodToJsonSchema(createRoomDTOSchema),
+	},
+	getRoomDetailsSchema: {
+		summary: "Get room details by roomId",
+		tags: ["rooms"],
+		params: zodToJsonSchema(roomIdParamSchema),
 	},
 	joinRoomSchema: {
 		summary: "Join a game room",
@@ -69,10 +75,5 @@ export const RoomRouteSchemas = {
 		summary: "Leave a room",
 		tags: ["rooms"],
 		body: zodToJsonSchema(leaveRoomDTOSchema),
-	},
-	getRoomDetailsSchema: {
-		summary: "Get room details by roomId",
-		tags: ["rooms"],
-		params: zodToJsonSchema(roomIdParamSchema),
 	},
 };

@@ -72,7 +72,18 @@ const RoomSchema = new Schema<IRoom>(
 		chat_messages: { type: [ChatMessageSchema], default: [] },
 		logs: { type: [String], default: [] },
 	},
-	{ timestamps: true },
+	{
+		timestamps: true,
+		toJSON: {
+			transform: (_, ret) => {
+				ret.user_id = ret._id.toString();
+				ret.room_password = undefined;
+
+				ret.__v = undefined;
+				return ret;
+			},
+		},
+	},
 );
 
 // --- Pre-save Hook (hash room_password if room is private) ---
