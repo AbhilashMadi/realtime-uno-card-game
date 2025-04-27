@@ -19,6 +19,7 @@ export interface IRoom extends Document {
 	room_id: string;
 	name: string;
 	created_by: Types.ObjectId;
+	host: string;
 	players: RoomPlayer[];
 	max_players: number;
 	status: RoomStatus;
@@ -58,6 +59,7 @@ const RoomSchema = new Schema<IRoom>(
 		room_id: { type: String, required: true, unique: true, index: true },
 		name: { type: String, required: true },
 		created_by: { type: Schema.Types.ObjectId, ref: "User", required: true },
+		host: { type: String, require: true },
 		players: { type: [RoomPlayerSchema], default: [] },
 		max_players: { type: Number, default: 4 },
 		chat_enabled: { type: Boolean, default: true },
@@ -76,10 +78,17 @@ const RoomSchema = new Schema<IRoom>(
 		timestamps: true,
 		toJSON: {
 			transform: (_, ret) => {
-				ret.user_id = ret._id.toString();
-				ret.room_password = undefined;
+				// Modify
+				ret.created_at = ret.createdAt;
+				ret.updated_at = ret.updatedAt;
 
+				// Remove
+				ret.room_password = undefined;
+				ret.created_by = undefined;
+				ret._id = undefined;
 				ret.__v = undefined;
+				ret.createdAt = undefined;
+				ret.updatedAt = undefined;
 				return ret;
 			},
 		},

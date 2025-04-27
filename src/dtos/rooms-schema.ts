@@ -16,38 +16,21 @@ export const createRoomDTOSchema = z.object({
 	is_private: z.boolean().default(false),
 });
 
-// --- Get Room Details ---
+// --- Get Room Details  ---
+// --- Room Join Schema  ---
+// --- Room Start Schema ---
+// --- Room Leave Schema ---
 const roomIdParamSchema = z.object({
 	room_id: z.string({ required_error: ErrorMessages.required("Room ID") }),
 });
 
-// --- Room Join Schema ---
-export const joinRoomDTOSchema = z.object({
-	room_id: z
-		.string({ required_error: ErrorMessages.required("Room ID") })
-		.min(6, { message: "Invalid Room ID" }),
-});
-
-// --- Room Start Schema ---
-export const startRoomDTOSchema = z.object({
-	room_id: z
-		.string({ required_error: ErrorMessages.required("Room ID") })
-		.min(6, { message: "Invalid Room ID" }),
-});
-
-// --- Room Leave Schema ---
-export const leaveRoomDTOSchema = z.object({
-	room_id: z
-		.string({ required_error: ErrorMessages.required("Room ID") })
-		.min(6, { message: "Invalid Room ID" }),
-});
-
 // --- Type Inference ---
 export type CreateRoomInput = z.infer<typeof createRoomDTOSchema>;
-export type JoinRoomInput = z.infer<typeof joinRoomDTOSchema>;
-export type StartRoomInput = z.infer<typeof startRoomDTOSchema>;
-export type LeaveRoomInput = z.infer<typeof leaveRoomDTOSchema>;
-export type GetRoomDetailsQuery = z.infer<typeof roomIdParamSchema>;
+export type GetRoomDetailsParamsInput = z.infer<typeof roomIdParamSchema>;
+export type JoinRoomParamsInput = z.infer<typeof roomIdParamSchema>;
+export type StartRoomInput = z.infer<typeof roomIdParamSchema>;
+export type LeaveRoomInput = z.infer<typeof roomIdParamSchema>;
+export type CancelRoomInput = z.infer<typeof roomIdParamSchema>;
 
 // --- JSON Schema for Swagger/Docs ---
 export const RoomRouteSchemas = {
@@ -64,16 +47,16 @@ export const RoomRouteSchemas = {
 	joinRoomSchema: {
 		summary: "Join a game room",
 		tags: ["rooms"],
-		body: zodToJsonSchema(joinRoomDTOSchema),
+		params: zodToJsonSchema(roomIdParamSchema),
 	},
 	startRoomSchema: {
 		summary: "Start the game in room",
 		tags: ["rooms"],
-		body: zodToJsonSchema(startRoomDTOSchema),
+		body: zodToJsonSchema(roomIdParamSchema),
 	},
 	leaveRoomSchema: {
 		summary: "Leave a room",
 		tags: ["rooms"],
-		body: zodToJsonSchema(leaveRoomDTOSchema),
+		body: zodToJsonSchema(roomIdParamSchema),
 	},
 };

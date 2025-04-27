@@ -1,45 +1,50 @@
 import { corsConfig } from "@configs";
-import type { FastifyPluginAsync } from "fastify";
-import type { FastifyInstance } from "fastify";
+import type { FastifyInstance, FastifyPluginAsync } from "fastify";
 import fp from "fastify-plugin";
 import { Server as SocketIOServer } from "socket.io";
 
 const socketIoPlugin: FastifyPluginAsync = fp(
 	async (fastify: FastifyInstance) => {
 		try {
-			// Initialize the Socket.IO server
+			// Initialize Socket.IO server
 			const io = new SocketIOServer(fastify.server, {
 				cors: corsConfig.socket,
 			});
 
-			// Log when server is started
-			fastify.log.info("⚡ Socket.IO server initialized.");
+			// Decorate fastify instance
+			fastify.decorate("io", io);
 
-			// Handle new socket connections
+			// Decorate request object
+			fastify.decorateRequest("io", null);
+
+			// Attach io to each incoming request
+			fastify.addHook("onRequest", async (request) => {
+				request.io = io;
+			});
+
+			// Setup connection listener
 			io.on("connection", (socket) => {
 				fastify.log.info(`New connection: ${socket.id}`);
 
-				// Handle disconnection
 				socket.on("disconnect", () => {
 					fastify.log.info(`User disconnected: ${socket.id}`);
 				});
 
-				// Handle any errors that might occur on the socket
 				socket.on("error", (err) => {
 					fastify.log.error(`Socket error: ${err.message}`);
 				});
 			});
 
-			fastify.decorate("io", io);
-			fastify.log.info("Socket.IO server setup complete.");
-		} catch (error: unknown) {
-			// Log the error if setup fails
+			fastify.log.info(
+				"⚡ Socket.IO server initialized and attached to Fastify.",
+			);
+		} catch (error) {
 			fastify.log.error(
-				`Error during Socket.IO server setup: ${(error as { message: string }).message}`,
+				`Error during Socket.IO setup: ${(error as { message: string }).message}`,
 			);
 			throw error;
 		}
 	},
 );
 
-export default fp(socketIoPlugin);
+export default socketIoPlugin;

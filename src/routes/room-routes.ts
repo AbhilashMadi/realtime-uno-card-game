@@ -1,15 +1,10 @@
 import { RoomRouteSchemas } from "@/dtos/rooms-schema.js";
-import { createRoomController, getRoomDetailsController } from "@controllers";
+import {
+	createRoomController,
+	getRoomDetailsController,
+	joinRoomController,
+} from "@controllers";
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-
-// --- Join Room ---
-export async function joinRoomController(
-	request: FastifyRequest,
-	reply: FastifyReply,
-) {
-	// TODO: Implement
-	return reply.send({ message: "joinRoomController not implemented" });
-}
 
 // --- Start Room ---
 export async function startRoomController(
@@ -43,7 +38,7 @@ export default async function roomsRoutes(app: FastifyInstance) {
 	});
 
 	// --- Join Room ---
-	app.post("/join", {
+	app.post("/join/:room_id", {
 		schema: RoomRouteSchemas.joinRoomSchema,
 		handler: joinRoomController,
 	});

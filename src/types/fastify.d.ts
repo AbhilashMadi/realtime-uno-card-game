@@ -10,6 +10,7 @@ declare module "fastify" {
 	}
 
 	interface FastifyRequest {
+		io: SocketIOServer;
 		user: JWTPayload;
 	}
 

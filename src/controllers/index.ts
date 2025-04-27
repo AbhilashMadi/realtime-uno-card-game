@@ -5,3 +5,4 @@ export { default as meController } from "./auth/me-controller.js";
 
 export { default as createRoomController } from "./rooms/create-room-controller.js";
 export { default as getRoomDetailsController } from "./rooms/room-details-controller.js";
+export { default as joinRoomController } from "./rooms/join-room-controller.js";

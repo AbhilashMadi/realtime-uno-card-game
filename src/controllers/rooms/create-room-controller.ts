@@ -1,29 +1,29 @@
 import type { CreateRoomInput } from "@/dtos/rooms-schema.js";
 import { ConflictException } from "@exceptions";
-import { Room, RoomPemission } from "@models";
-import { Generators, PlayerRoles, RoomPermissions, RoomStatus } from "@utils";
+import { Room } from "@models";
+import { Generators, RoomStatus } from "@utils";
 import type { FastifyReply, FastifyRequest } from "fastify";
 
 export default async function createRoomController(
 	request: FastifyRequest<{ Body: CreateRoomInput }>,
 	response: FastifyReply,
 ) {
-	// 1. Validate the request body
+	// 1. Validate request body
 	const { is_private, max_players, name, room_password, chat_enabled } =
 		request.body;
 
-	// 2. Get Authenticated User
+	// 2. Get authenticated user
 	const { user_id, username } = request.user;
 	const { log } = request;
 
-	// 3. Dont allow to create multiple rooms with the existing rooms name
+	// 3. Check if room name already exists for the user
 	const roomWithSameName = await Room.findOne({ created_by: user_id, name });
 	if (roomWithSameName) {
 		log.warn(
-			`User(${user_id}) attempted to create room with existing room name.`,
+			`User(${user_id}) attempted to create room with existing room nam+e.`,
 		);
 		throw new ConflictException(
-			`You already have an room created before with the name: ${name}, use other name for this room!`,
+			`You already have a room with the name: ${name}. Please use another name.`,
 		);
 	}
 
@@ -43,48 +43,22 @@ export default async function createRoomController(
 	// 5. Generate unique room ID
 	const room_id = Generators.generateRoomId();
 
-	// 6. Create Room
+	// 6. Create the Room (no immediate player addition or host permissions)
 	const newRoom = new Room({
 		created_by: user_id,
+		host: username,
 		room_id,
 		name,
 		max_players,
 		is_private,
 		chat_enabled,
-		// room_password only if private
 		room_password: is_private ? room_password : undefined,
-		players: [
-			{
-				user: user_id,
-				username: username,
-			},
-		],
 	});
 
-	// 7. Create RoomPermission for creator
-	await RoomPemission.create({
-		room_id: newRoom._id,
-		user_id: user_id,
-		role: PlayerRoles.HOST,
-		chat_enabled,
-		permissions: [
-			RoomPermissions.START_GAME,
-			RoomPermissions.KICK_PLAYER,
-			RoomPermissions.CANCEL_GAME,
-			RoomPermissions.SEND_CHAT,
-			RoomPermissions.PLAY_MOVE,
-		],
-	});
-
+	// 7. Save the room
 	await newRoom.save();
 	log.info(`Room created by User(${user_id}): Room(${room_id})`);
 
-	// 5. Send response to the creator
-	return response.success("Room created successfully.", {
-		room_id: newRoom.room_id,
-		name: newRoom.name,
-		max_players: newRoom.max_players,
-		is_private: newRoom.is_private,
-		created_by: newRoom.created_by,
-	});
+	// 8. Send HTTP response to the creator
+	return response.success("Room created successfully.", newRoom.toJSON());
 }
