@@ -9,6 +9,7 @@ import {
 	docsPlugin,
 	helmetPlugin,
 	responsePlugin,
+	// serveStaticPlugin,
 	socketIoPlugin,
 } from "@plugins";
 
@@ -17,16 +18,19 @@ export default async function createFastifyServer(): Promise<FastifyInstance> {
 		logger: loggerConfig[envConfig.NODE_ENV],
 	});
 
-	// Register fastify scalar docs
-	await app.register(docsPlugin);
-
 	// Register core plugins
-	await app.register(corsPlugin);
-	await app.register(cookiePlugin);
-	await app.register(helmetPlugin);
+	await app.register(corsPlugin); // CORS
+	await app.register(cookiePlugin); // Cookies
+	await app.register(helmetPlugin); // Security headers
 
 	// Register the MongoDB connection plugin
 	await app.register(dbPlugin);
+
+	// Serve static files through GET - '/'
+	// await app.register(serveStaticPlugin);
+
+	// Register fastify scalar docs
+	await app.register(docsPlugin);
 
 	// Custom decorators
 	await app.register(responsePlugin);
