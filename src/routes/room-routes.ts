@@ -8,7 +8,7 @@ import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 
 // --- Start Room ---
 export async function startRoomController(
-	request: FastifyRequest,
+	_request: FastifyRequest,
 	reply: FastifyReply,
 ) {
 	// TODO: Implement
@@ -17,7 +17,7 @@ export async function startRoomController(
 
 // --- Leave Room ---
 export async function leaveRoomController(
-	request: FastifyRequest,
+	_request: FastifyRequest,
 	reply: FastifyReply,
 ) {
 	// TODO: Implement
