@@ -75,7 +75,7 @@ jobs:
         run: pnpm install
 
       - name: Build for Production
-        run: pnpm run build
+        run: pnpm run build:server
 
       - name: Deploy
         run: echo "Add deployment steps here (e.g., rsync, ssh, docker login/push, etc.)"
