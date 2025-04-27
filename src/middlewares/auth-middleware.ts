@@ -1,8 +1,4 @@
-import type {
-	DoneFuncWithErrOrRes,
-	FastifyReply,
-	FastifyRequest,
-} from "fastify";
+import type { FastifyReply, FastifyRequest } from "fastify";
 
 import type { JWTPayload } from "@/types/jwt.js";
 import { UnauthorizedException } from "@exceptions";

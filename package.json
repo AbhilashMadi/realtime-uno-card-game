@@ -8,10 +8,11 @@
 	"types": "build/src/app.d.ts",
 	"scripts": {
 		"clean": "rm -rf build",
-		"build": "npm run clean && tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+		"build:client": "cd client && npm run build",
+		"build:server": "npm run clean && tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+		"start:client": "cd client && npm run dev",
 		"start:dev": "npm run clean && tsx watch --env-file=.env src/app.ts",
-		"start:prod": "npm run clean && npm run build && node --env-file=.env build/src/app.js",
-		"format": "prettier --write .",
+		"start:prod": "npm run clean && npm run build:client && npm run build:server && node --env-file=.env build/src/app.js",
 		"biome": "biome check",
 		"biome:fix": "biome format --write .",
 		"prepare": "lefthook install"
@@ -20,19 +21,7 @@
 		"type": "git",
 		"url": "https://github.com/AbhilashMadi/fastify-typescript-starter.git"
 	},
-	"keywords": [
-		"fastify",
-		"typescript",
-		"starter",
-		"boilerplate",
-		"mongoose",
-		"zod",
-		"socket.io",
-		"fastify-plugin",
-		"rest-api",
-		"nodejs",
-		"backend"
-	],
+	"keywords": [],
 	"author": "Abhilash <madiabhilash1563@gmail.com>",
 	"license": "MIT",
 	"engines": {

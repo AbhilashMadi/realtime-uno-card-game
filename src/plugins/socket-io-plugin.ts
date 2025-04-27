@@ -12,15 +12,15 @@ const socketIoPlugin: FastifyPluginAsync = fp(
 			});
 
 			// Decorate fastify instance
-			fastify.decorate("io", io);
+			fastify.decorate("io", { getter: () => io });
 
 			// Decorate request object
-			fastify.decorateRequest("io", null);
+			fastify.decorateRequest("io", { getter: () => io });
 
-			// Attach io to each incoming request
-			fastify.addHook("onRequest", async (request) => {
-				request.io = io;
-			});
+			// // Attach io to each incoming request (optional, now already available via request.io)
+			// fastify.addHook("onRequest", async (request) => {
+			// 	// request.io already accessible
+			// });
 
 			// Setup connection listener
 			io.on("connection", (socket) => {
