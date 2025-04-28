@@ -1,7 +1,7 @@
 
 export default function useAuth() {
   return {
-    autenticated: true,
+    autenticated: false,
     user: {}
   }
 }
