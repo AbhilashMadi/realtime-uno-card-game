@@ -9,6 +9,7 @@ import LandingPage from "@/pages/landing-page";
 import LoginPage from "@/pages/login-page";
 import NotFoundPage from "@/pages/not-found-page";
 import RegisterPage from "@/pages/register-page";
+import { ThemeProvider } from "./context/theme-provider";
 
 const routes = createBrowserRouter([
 	{
@@ -30,7 +31,9 @@ const routes = createBrowserRouter([
 ]);
 
 const App: FC = () => {
-	return <RouterProvider router={routes} />;
+	return (<ThemeProvider>
+		<RouterProvider router={routes} />
+	</ThemeProvider>)
 };
 
 export default App;
