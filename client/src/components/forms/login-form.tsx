@@ -1,5 +1,5 @@
 import { type FC } from "react";
-import Text from '@/components/custom/text';
+import Text from "@/components/ui/text";
 
 const LoginForm: FC = () => {
 

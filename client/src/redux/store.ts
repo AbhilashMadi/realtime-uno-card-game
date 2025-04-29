@@ -1,7 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from "@reduxjs/toolkit"
 
 //Query APIs
-import authApi from '@/redux/services/auth-api'
+import authApi from "@/redux/services/auth-api"
 
 const store = configureStore({
   reducer: {

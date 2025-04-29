@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { type FC } from "react";
 
 const RegisterPage: FC = () => {
   return (<main className="flex items-center justify-center min-h-dvh">

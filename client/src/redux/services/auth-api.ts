@@ -1,4 +1,4 @@
-import { axiosBaseQuery } from '@/configs/axios-config';
+import { axiosBaseQuery } from "@/configs/axios-config";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { type UserSchema, type LoginSchema } from "@/types/auth-types";
 
