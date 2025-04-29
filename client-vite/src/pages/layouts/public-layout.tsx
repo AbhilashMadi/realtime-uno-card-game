@@ -9,11 +9,11 @@ const PublicLayout: FC = () => {
   const { autenticated } = useAuth();
 
   return autenticated ? (
-    <Provider>
-      <Navigate replace to={Paths.LANDING} />
-    </Provider>
+    <Navigate replace to={Paths.LANDING} />
   ) : (
-    <Outlet />
+    <Provider>
+      <Outlet />
+    </Provider>
   );
 };
 

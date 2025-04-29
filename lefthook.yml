@@ -5,7 +5,7 @@ pre-commit:
       run: npx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
       stage_fixed: true
     lint-fix:client:
-      run: cd client && npm run lint:fix
+      run: cd client-vite && npm run lint:fix
 pre-push:
   commands:
     check:
