@@ -11,6 +11,7 @@ import authApi from "@/redux/services/auth-api";
 
 export const axiosInstance = axios.create({
   baseURL: "http://localhost:8080/api/v1",
+  withCredentials: true,
 });
 
 // Base Query function

@@ -1,19 +1,28 @@
+import { useState, type FC } from "react";
 import { Link } from "@heroui/link";
 import { Button } from "@heroui/button";
 import { Checkbox } from "@heroui/checkbox";
 import { Form } from "@heroui/form";
 import { Input } from "@heroui/input";
-import { useState, type FC } from "react";
+import { Alert } from "@heroui/alert";
 
 import { EyeIcon } from "@/components/icons";
+import { useLoginMutation } from "@/redux/services/auth-api";
+import { LoginSchema } from "@/types/auth-types";
 
 const LoginForm: FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-
   const toggleVisibility = () => setIsVisible(!isVisible);
+  const [login, { isLoading, isError, error }] = useLoginMutation();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    const remember = "remember" in data;
+
+    await login({ ...data, remember } as LoginSchema);
   };
 
   return (
@@ -24,14 +33,15 @@ const LoginForm: FC = () => {
     >
       <Input
         isRequired
-        label="Email Address"
-        name="email"
-        placeholder="Enter your email"
-        type="email"
+        autoComplete="username"
+        label="Username"
+        name="username"
+        placeholder="Enter your username"
         variant="bordered"
       />
       <Input
         isRequired
+        autoComplete="current-password"
         endContent={
           <button type="button" onClick={toggleVisibility}>
             <EyeIcon open={isVisible} />
@@ -51,7 +61,20 @@ const LoginForm: FC = () => {
           Forgot password?
         </Link>
       </div>
-      <Button className="w-full" color="primary" type="submit">
+      {isError && (
+        <Alert
+          color="danger"
+          //@ts-ignore
+          description={error?.data.error.message}
+          title={""}
+        />
+      )}
+      <Button
+        className="w-full"
+        color="primary"
+        isLoading={isLoading}
+        type="submit"
+      >
         Sign In
       </Button>
     </Form>

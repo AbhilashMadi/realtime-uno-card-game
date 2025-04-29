@@ -5,5 +5,11 @@ export type LoginSchema = {
 };
 
 export type UserSchema = {
+  full_name: string;
   username: string;
+  email: string;
+  role: string;
+  user_id: string;
+  created_at: string;
+  updated_at: string;
 };
