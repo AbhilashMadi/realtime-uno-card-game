@@ -4,6 +4,14 @@ export type LoginSchema = {
   remember: boolean;
 };
 
+export type RegisterSchema = {
+  full_name: "";
+  username: "";
+  email: `${string}@${string}`;
+  password: "";
+  confirm_password: "";
+};
+
 export type UserSchema = {
   full_name: string;
   username: string;

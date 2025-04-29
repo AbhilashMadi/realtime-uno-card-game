@@ -1,10 +1,10 @@
-import { useState, type FC } from "react";
-import { Link } from "@heroui/link";
+import { Alert } from "@heroui/alert";
 import { Button } from "@heroui/button";
 import { Checkbox } from "@heroui/checkbox";
 import { Form } from "@heroui/form";
 import { Input } from "@heroui/input";
-import { Alert } from "@heroui/alert";
+import { Link } from "@heroui/link";
+import { useState, type FC } from "react";
 
 import { EyeIcon } from "@/components/icons";
 import { useLoginMutation } from "@/redux/services/auth-api";
@@ -13,7 +13,7 @@ import { LoginSchema } from "@/types/auth-types";
 const LoginForm: FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
-  const [login, { isLoading, isError, error }] = useLoginMutation();
+  const [login, { isLoading, isError, data, error }] = useLoginMutation();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -65,8 +65,8 @@ const LoginForm: FC = () => {
         <Alert
           color="danger"
           //@ts-ignore
-          description={error?.data.error.message}
-          title={""}
+          description={error?.data?.error?.message || "Something went wrong"}
+          title=""
         />
       )}
       <Button
