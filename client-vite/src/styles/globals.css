@@ -6,3 +6,9 @@
   --font-sans: "Inter", sans-serif;
   --font-mono: "Space Grotesk", sans-serif;
 }
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
