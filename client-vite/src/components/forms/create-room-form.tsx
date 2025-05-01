@@ -9,6 +9,7 @@ import {
   ModalBody,
   ModalFooter,
 } from "@heroui/modal";
+import { Alert } from "@heroui/alert";
 
 import { EyeIcon } from "../icons";
 
@@ -96,10 +97,17 @@ const CreateRoomForm: FC<ICreateRoomForm> = ({ isOpen, onClose }) => {
               label="Enable Chat"
               onValueChange={setChatEnabled}
             />
+
+            <Alert color="warning" />
           </ModalBody>
 
           <ModalFooter>
-            <Button color="danger" variant="light" onPress={onClose}>
+            <Button
+              color="danger"
+              type="reset"
+              variant="flat"
+              onPress={onClose}
+            >
               Cancel
             </Button>
             <Button color="primary" type="submit">
