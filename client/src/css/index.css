@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --default-font-family: var(--font-sans);
+  --default-mono-font-family: var(--font-mono);
+}
+
+:root {
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Space Grotesk", sans-serif;
+}
+
+.dark {
+}
