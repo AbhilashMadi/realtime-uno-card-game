@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "Mogra", system-ui;
   --font-mono: "Space Grotesk", sans-serif;
 }
 
