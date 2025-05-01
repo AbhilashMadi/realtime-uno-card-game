@@ -1,10 +1,10 @@
-import { type FC } from "react";
 import { useDisclosure } from "@heroui/modal";
+import { type FC } from "react";
 
+import CreateRoomForm from "@/components/forms/create-room-form";
 import { AddRoomIcon, GamePodIcon } from "@/components/icons";
-import JoinRoomModal from "@/components/modals/join-room-modal";
 import { landingPageButton } from "@/components/primitives";
-import CreateRoomModal from "@/components/modals/create-room-modal";
+import JoinRoomForm from "@/components/forms/join-room-form";
 
 const LandingPage: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -16,8 +16,8 @@ const LandingPage: FC = () => {
 
   return (
     <>
-      <JoinRoomModal isOpen={isOpen} onClose={onClose} />
-      <CreateRoomModal
+      <JoinRoomForm isOpen={isOpen} onClose={onClose} />
+      <CreateRoomForm
         isOpen={isCreateRoomModalOpen}
         onClose={onCreateRoomModalClose}
       />

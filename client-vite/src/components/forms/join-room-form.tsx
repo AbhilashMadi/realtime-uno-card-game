@@ -1,15 +1,36 @@
+import { Button } from "@heroui/button";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "@heroui/modal";
 import { type FC } from "react";
 
-const JoinRoomForm: FC = () => {
+interface IJoinRoomForm {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const JoinRoomForm: FC<IJoinRoomForm> = ({ isOpen, onClose }) => {
   return (
-    <form>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi voluptatem
-      asperiores, sunt aliquam facere ea aperiam. Libero quia facere asperiores,
-      dolores officia aliquam maxime earum tempore eligendi aperiam dolor sint
-      mollitia minima quos quo, laudantium necessitatibus iusto quasi ratione
-      illum perferendis eum vitae. Blanditiis aut quaerat nisi fugit odit
-      aliquam!
-    </form>
+    <Modal backdrop={"opaque"} isOpen={isOpen} onClose={onClose}>
+      <ModalContent>
+        <ModalHeader className="flex flex-col gap-1">Join Room</ModalHeader>
+        <ModalBody>
+          <form>Join Room</form>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="danger" variant="light" onPress={onClose}>
+            Cancel
+          </Button>
+          <Button color="primary" onPress={onClose}>
+            Join Now
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
   );
 };
 
