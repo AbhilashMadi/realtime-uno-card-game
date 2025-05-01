@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { tv } from "tailwind-variants";
 
 export const title = tv({
@@ -80,3 +81,20 @@ export const landingPageButton = tv({
     intent: "join",
   },
 });
+
+// Shared styles for all switches
+export const switchClassNames = {
+  base: clsx(
+    "inline-flex flex-row-reverse w-full max-w-md bg-content1 hover:bg-content2 items-center",
+    "justify-between cursor-pointer rounded-xl gap-2 p-2 border-2 border-transparent",
+    "data-[selected=true]:border-primary border-default-200",
+  ),
+  wrapper: "p-0 h-4 overflow-visible",
+  thumb: clsx(
+    "w-6 h-6 border-2 shadow-lg",
+    "group-data-[hover=true]:border-primary",
+    "group-data-[selected=true]:ms-6",
+    "group-data-[pressed=true]:w-7",
+    "group-data-[selected]:group-data-[pressed]:ms-4",
+  ),
+};
