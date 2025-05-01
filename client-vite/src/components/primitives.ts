@@ -51,3 +51,32 @@ export const subtitle = tv({
     fullWidth: true,
   },
 });
+
+export const landingPageButton = tv({
+  base: `
+    flex flex-col items-center justify-center
+    w-44 h-44 border-2 shadow-md rounded-3xl
+    transition
+    outline-none group
+    active:scale-95
+  `,
+  variants: {
+    intent: {
+      join: `
+        bg-green-50 border-green-500 text-green-600
+        hover:bg-green-100 hover:text-green-800
+        dark:bg-green-900 dark:border-green-600 dark:text-green-300
+        dark:hover:bg-green-800 dark:hover:text-green-100
+      `,
+      create: `
+        bg-yellow-50 border-yellow-500 text-yellow-600
+        hover:bg-yellow-100 hover:text-yellow-800
+        dark:bg-yellow-900 dark:border-yellow-600 dark:text-yellow-300
+        dark:hover:bg-yellow-800 dark:hover:text-yellow-100
+      `,
+    },
+  },
+  defaultVariants: {
+    intent: "join",
+  },
+});
