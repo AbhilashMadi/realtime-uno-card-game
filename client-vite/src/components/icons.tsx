@@ -53,18 +53,258 @@ export const MoonFilledIcon = ({
   ...props
 }: IconSvgProps) => (
   <svg
-    aria-hidden="true"
-    focusable="false"
     height={size || height}
-    role="presentation"
     viewBox="0 0 24 24"
     width={size || width}
+    xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <path
-      d="M21.53 15.93c-.16-.27-.61-.69-1.73-.49a8.46 8.46 0 01-1.88.13 8.409 8.409 0 01-5.91-2.82 8.068 8.068 0 01-1.44-8.66c.44-1.01.13-1.54-.09-1.76s-.77-.55-1.83-.11a10.318 10.318 0 00-6.32 10.21 10.475 10.475 0 007.04 8.99 10 10 0 002.89.55c.16.01.32.02.48.02a10.5 10.5 0 008.47-4.27c.67-.93.49-1.519.32-1.79z"
+    <g
+      fill="none"
+      stroke="currentColor"
+      strokeDasharray={4}
+      strokeDashoffset={4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1}
+    >
+      <path d="M13 4h1.5M13 4h-1.5M13 4v1.5M13 4v-1.5">
+        <animate
+          attributeName="stroke-dashoffset"
+          begin="0.6s;lineMdSunnyOutlineToMoonAltLoopTransition0.begin+6s"
+          dur="0.4s"
+          fill="freeze"
+          id="lineMdSunnyOutlineToMoonAltLoopTransition0"
+          values="4;0"
+        />
+        <animate
+          attributeName="stroke-dashoffset"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition0.begin+2s;lineMdSunnyOutlineToMoonAltLoopTransition0.begin+4s"
+          dur="0.4s"
+          fill="freeze"
+          values="4;0"
+        />
+        <animate
+          attributeName="stroke-dashoffset"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition0.begin+1.2s;lineMdSunnyOutlineToMoonAltLoopTransition0.begin+3.2s;lineMdSunnyOutlineToMoonAltLoopTransition0.begin+5.2s"
+          dur="0.4s"
+          fill="freeze"
+          values="0;4"
+        />
+        <set
+          attributeName="d"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition0.begin+1.8s"
+          fill="freeze"
+          to="M12 5h1.5M12 5h-1.5M12 5v1.5M12 5v-1.5"
+        />
+        <set
+          attributeName="d"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition0.begin+3.8s"
+          fill="freeze"
+          to="M12 4h1.5M12 4h-1.5M12 4v1.5M12 4v-1.5"
+        />
+        <set
+          attributeName="d"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition0.begin+5.8s"
+          fill="freeze"
+          to="M13 4h1.5M13 4h-1.5M13 4v1.5M13 4v-1.5"
+        />
+      </path>
+      <path d="M19 11h1.5M19 11h-1.5M19 11v1.5M19 11v-1.5">
+        <animate
+          attributeName="stroke-dashoffset"
+          begin="1s;lineMdSunnyOutlineToMoonAltLoopTransition1.begin+6s"
+          dur="0.4s"
+          fill="freeze"
+          id="lineMdSunnyOutlineToMoonAltLoopTransition1"
+          values="4;0"
+        />
+        <animate
+          attributeName="stroke-dashoffset"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition1.begin+2s;lineMdSunnyOutlineToMoonAltLoopTransition1.begin+4s"
+          dur="0.4s"
+          fill="freeze"
+          values="4;0"
+        />
+        <animate
+          attributeName="stroke-dashoffset"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition1.begin+1.2s;lineMdSunnyOutlineToMoonAltLoopTransition1.begin+3.2s;lineMdSunnyOutlineToMoonAltLoopTransition1.begin+5.2s"
+          dur="0.4s"
+          fill="freeze"
+          values="0;4"
+        />
+        <set
+          attributeName="d"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition1.begin+1.8s"
+          fill="freeze"
+          to="M17 11h1.5M17 11h-1.5M17 11v1.5M17 11v-1.5"
+        />
+        <set
+          attributeName="d"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition1.begin+3.8s"
+          fill="freeze"
+          to="M18 12h1.5M18 12h-1.5M18 12v1.5M18 12v-1.5"
+        />
+        <set
+          attributeName="d"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition1.begin+5.8s"
+          fill="freeze"
+          to="M19 11h1.5M19 11h-1.5M19 11v1.5M19 11v-1.5"
+        />
+      </path>
+      <path d="M19 4h1.5M19 4h-1.5M19 4v1.5M19 4v-1.5">
+        <animate
+          attributeName="stroke-dashoffset"
+          begin="2.8s;lineMdSunnyOutlineToMoonAltLoopTransition2.begin+6s"
+          dur="0.4s"
+          fill="freeze"
+          id="lineMdSunnyOutlineToMoonAltLoopTransition2"
+          values="4;0"
+        />
+        <animate
+          attributeName="stroke-dashoffset"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition2.begin+2s"
+          dur="0.4s"
+          fill="freeze"
+          values="4;0"
+        />
+        <animate
+          attributeName="stroke-dashoffset"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition2.begin+1.2s;lineMdSunnyOutlineToMoonAltLoopTransition2.begin+3.2s"
+          dur="0.4s"
+          fill="freeze"
+          values="0;4"
+        />
+        <set
+          attributeName="d"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition2.begin+1.8s"
+          fill="freeze"
+          to="M20 5h1.5M20 5h-1.5M20 5v1.5M20 5v-1.5"
+        />
+        <set
+          attributeName="d"
+          begin="lineMdSunnyOutlineToMoonAltLoopTransition2.begin+5.8s"
+          fill="freeze"
+          to="M19 4h1.5M19 4h-1.5M19 4v1.5M19 4v-1.5"
+        />
+      </path>
+    </g>
+    <g
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+    >
+      <g>
+        <path
+          d="M12 21v1M21 12h1M12 3v-1M3 12h-1"
+          strokeDasharray={2}
+          strokeDashoffset={4}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            dur="0.2s"
+            fill="freeze"
+            values="4;2"
+          />
+        </path>
+        <path
+          d="M18.5 18.5l0.5 0.5M18.5 5.5l0.5 -0.5M5.5 5.5l-0.5 -0.5M5.5 18.5l-0.5 0.5"
+          strokeDasharray={2}
+          strokeDashoffset={4}
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            begin="0.2s"
+            dur="0.2s"
+            fill="freeze"
+            values="4;2"
+          />
+        </path>
+        <set attributeName="opacity" begin="0.5s" fill="freeze" to={0} />
+      </g>
+      <path
+        d="M7 6 C7 12.08 11.92 17 18 17 C18.53 17 19.05 16.96 19.56 16.89 C17.95 19.36 15.17 21 12 21 C7.03 21 3 16.97 3 12 C3 8.83 4.64 6.05 7.11 4.44 C7.04 4.95 7 5.47 7 6 Z"
+        opacity={0}
+      >
+        <set attributeName="opacity" begin="0.5s" fill="freeze" to={1} />
+      </path>
+    </g>
+    <mask id="lineMdSunnyOutlineToMoonAltLoopTransition3">
+      <circle cx={12} cy={12} fill="#fff" r={12} />
+      <circle cx={12} cy={12} r={4}>
+        <animate
+          attributeName="r"
+          begin="0.1s"
+          dur="0.4s"
+          fill="freeze"
+          values="4;8"
+        />
+      </circle>
+      <circle cx={22} cy={2} fill="#fff" r={3}>
+        <animate
+          attributeName="cx"
+          begin="0.1s"
+          dur="0.4s"
+          fill="freeze"
+          values="22;18"
+        />
+        <animate
+          attributeName="cy"
+          begin="0.1s"
+          dur="0.4s"
+          fill="freeze"
+          values="2;6"
+        />
+        <animate
+          attributeName="r"
+          begin="0.1s"
+          dur="0.4s"
+          fill="freeze"
+          values="3;12"
+        />
+      </circle>
+      <circle cx={22} cy={2} r={1}>
+        <animate
+          attributeName="cx"
+          begin="0.1s"
+          dur="0.4s"
+          fill="freeze"
+          values="22;18"
+        />
+        <animate
+          attributeName="cy"
+          begin="0.1s"
+          dur="0.4s"
+          fill="freeze"
+          values="2;6"
+        />
+        <animate
+          attributeName="r"
+          begin="0.1s"
+          dur="0.4s"
+          fill="freeze"
+          values="1;10"
+        />
+      </circle>
+    </mask>
+    <circle
+      cx={12}
+      cy={12}
       fill="currentColor"
-    />
+      mask="url(#lineMdSunnyOutlineToMoonAltLoopTransition3)"
+      r={6}
+    >
+      <animate
+        attributeName="r"
+        begin="0.1s"
+        dur="0.4s"
+        fill="freeze"
+        values="6;10"
+      />
+      <set attributeName="opacity" begin="0.5s" fill="freeze" to={0} />
+    </circle>
   </svg>
 );
 
@@ -75,17 +315,98 @@ export const SunFilledIcon = ({
   ...props
 }: IconSvgProps) => (
   <svg
-    aria-hidden="true"
-    focusable="false"
     height={size || height}
-    role="presentation"
     viewBox="0 0 24 24"
     width={size || width}
+    xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g fill="currentColor">
-      <path d="M19 12a7 7 0 11-7-7 7 7 0 017 7z" />
-      <path d="M12 22.96a.969.969 0 01-1-.96v-.08a1 1 0 012 0 1.038 1.038 0 01-1 1.04zm7.14-2.82a1.024 1.024 0 01-.71-.29l-.13-.13a1 1 0 011.41-1.41l.13.13a1 1 0 010 1.41.984.984 0 01-.7.29zm-14.28 0a1.024 1.024 0 01-.71-.29 1 1 0 010-1.41l.13-.13a1 1 0 011.41 1.41l-.13.13a1 1 0 01-.7.29zM22 13h-.08a1 1 0 010-2 1.038 1.038 0 011.04 1 .969.969 0 01-.96 1zM2.08 13H2a1 1 0 010-2 1.038 1.038 0 011.04 1 .969.969 0 01-.96 1zm16.93-7.01a1.024 1.024 0 01-.71-.29 1 1 0 010-1.41l.13-.13a1 1 0 011.41 1.41l-.13.13a.984.984 0 01-.7.29zm-14.02 0a1.024 1.024 0 01-.71-.29l-.13-.14a1 1 0 011.41-1.41l.13.13a1 1 0 010 1.41.97.97 0 01-.7.3zM12 3.04a.969.969 0 01-1-.96V2a1 1 0 012 0 1.038 1.038 0 01-1 1.04z" />
+    <g
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+    >
+      <path
+        d="M12 7c2.76 0 5 2.24 5 5c0 2.76 -2.24 5 -5 5c-2.76 0 -5 -2.24 -5 -5c0 -2.76 2.24 -5 5 -5"
+        fill="currentColor"
+        fillOpacity={0}
+        strokeDasharray={36}
+        strokeDashoffset={36}
+      >
+        <animate
+          attributeName="fill-opacity"
+          begin="1s"
+          dur="0.15s"
+          fill="freeze"
+          values="0;0.3"
+        />
+        <animate
+          attributeName="stroke-dashoffset"
+          dur="0.5s"
+          fill="freeze"
+          values="36;0"
+        />
+      </path>
+      <path
+        d="M12 19v1M19 12h1M12 5v-1M5 12h-1"
+        opacity={0}
+        strokeDasharray={2}
+        strokeDashoffset={2}
+      >
+        <animate
+          attributeName="d"
+          begin="0.6s"
+          dur="0.2s"
+          fill="freeze"
+          values="M12 19v1M19 12h1M12 5v-1M5 12h-1;M12 21v1M21 12h1M12 3v-1M3 12h-1"
+        />
+        <animate
+          attributeName="stroke-dashoffset"
+          begin="0.6s"
+          dur="0.2s"
+          fill="freeze"
+          values="2;0"
+        />
+        <set attributeName="opacity" begin="0.6s" fill="freeze" to={1} />
+        <animateTransform
+          attributeName="transform"
+          dur="30s"
+          repeatCount="indefinite"
+          type="rotate"
+          values="0 12 12;360 12 12"
+        />
+      </path>
+      <path
+        d="M17 17l0.5 0.5M17 7l0.5 -0.5M7 7l-0.5 -0.5M7 17l-0.5 0.5"
+        opacity={0}
+        strokeDasharray={2}
+        strokeDashoffset={2}
+      >
+        <animate
+          attributeName="d"
+          begin="0.8s"
+          dur="0.2s"
+          fill="freeze"
+          values="M17 17l0.5 0.5M17 7l0.5 -0.5M7 7l-0.5 -0.5M7 17l-0.5 0.5;M18.5 18.5l0.5 0.5M18.5 5.5l0.5 -0.5M5.5 5.5l-0.5 -0.5M5.5 18.5l-0.5 0.5"
+        />
+        <animate
+          attributeName="stroke-dashoffset"
+          begin="0.8s"
+          dur="0.2s"
+          fill="freeze"
+          values="2;0"
+        />
+        <set attributeName="opacity" begin="0.8s" fill="freeze" to={1} />
+        <animateTransform
+          attributeName="transform"
+          dur="30s"
+          repeatCount="indefinite"
+          type="rotate"
+          values="0 12 12;360 12 12"
+        />
+      </path>
     </g>
   </svg>
 );
