@@ -1,12 +1,8 @@
 .env
 node_modules
-<<<<<<< Updated upstream
-build
-=======
 client/node_modules
 client-vite/ndoe_modules
 
 build
 dist
 
->>>>>>> Stashed changes
