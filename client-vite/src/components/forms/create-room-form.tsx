@@ -1,6 +1,5 @@
-import { type FC, FormEvent, useState } from "react";
+import { ChangeEvent, type FC, FormEvent, useState } from "react";
 import { Input } from "@heroui/input";
-import { NumberInput } from "@heroui/number-input";
 import { Button } from "@heroui/button";
 import {
   Modal,
@@ -11,9 +10,10 @@ import {
 } from "@heroui/modal";
 import { Alert } from "@heroui/alert";
 
-import { EyeIcon } from "../icons";
-
+import { EyeIcon } from "@/components/icons";
 import LabeledSwitch from "@/components/custom/labeled-switch";
+import { type CreateRoomFormSchema } from "@/types/room-types";
+import ServerKeys from "@/utils/server-keys";
 
 interface ICreateRoomForm {
   isOpen: boolean;
@@ -21,25 +21,36 @@ interface ICreateRoomForm {
 }
 
 const CreateRoomForm: FC<ICreateRoomForm> = ({ isOpen, onClose }) => {
-  const [isPrivate, setIsPrivate] = useState<boolean>(false);
-  const [chatEnabled, setChatEnabled] = useState<boolean>(true);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const intialFormData: CreateRoomFormSchema = {
+    [ServerKeys.NAME]: "",
+    [ServerKeys.MAX_PLAYERS]: 2,
+    [ServerKeys.IS_PRIVATE]: true,
+    [ServerKeys.ROOM_PASSWORD]: "",
+    [ServerKeys.CHAT_ENABLED]: true,
+  };
+
+  const [formData, setFormData] =
+    useState<CreateRoomFormSchema>(intialFormData);
 
   const togglePasswordView = (): void => {
     setShowPassword(!showPassword);
   };
 
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData((pre) => ({ ...pre, [e.target.name]: e.target.value }));
+  };
+
+  const handleSwitchChange = (name: ServerKeys) => {
+    return (value: boolean) =>
+      setFormData((pre) => ({ ...pre, [name]: value }));
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-    const values = Object.fromEntries(formData.entries());
-
-    values.is_private = isPrivate.toString();
-    values.chat_enabled = chatEnabled.toString();
-
-    console.log("Form Submission:", values);
-    onClose();
+    console.log(formData);
   };
 
   return (
@@ -52,50 +63,61 @@ const CreateRoomForm: FC<ICreateRoomForm> = ({ isOpen, onClose }) => {
               isClearable
               isRequired
               label="Room Name"
-              name="name"
+              maxLength={40}
+              minLength={6}
+              name={ServerKeys.NAME}
               placeholder="e.g., Strategy Squad, Chill Lounge"
+              value={formData[ServerKeys.NAME]}
               variant="bordered"
+              onChange={handleInputChange}
             />
 
-            <NumberInput
+            <Input
               isRequired
-              defaultValue={2}
               label="Maximum Players"
               max={10}
               min={2}
-              name="max_players"
+              name={ServerKeys.MAX_PLAYERS}
               placeholder="Choose a number between 2 and 10"
+              type="number"
+              value={String(formData[ServerKeys.MAX_PLAYERS])}
               variant="bordered"
+              onChange={handleInputChange}
             />
 
             <LabeledSwitch
               description="Only invited players can join if enabled."
-              isSelected={isPrivate}
+              isSelected={formData[ServerKeys.IS_PRIVATE]}
               label="Private Room"
-              onValueChange={setIsPrivate}
+              onValueChange={handleSwitchChange(ServerKeys.IS_PRIVATE)}
             />
 
-            {isPrivate && (
+            {formData[ServerKeys.IS_PRIVATE] && (
               <Input
                 isRequired
+                disabled={!formData[ServerKeys.IS_PRIVATE]}
                 endContent={
                   <button type="button" onClick={togglePasswordView}>
                     <EyeIcon open={showPassword} />
                   </button>
                 }
                 label="Room Password"
+                maxLength={12}
+                minLength={8}
                 name="room_password"
                 placeholder="Set a password for private access"
                 type={showPassword ? "text" : "password"}
+                value={formData[ServerKeys.ROOM_PASSWORD]}
                 variant="bordered"
+                onChange={handleInputChange}
               />
             )}
 
             <LabeledSwitch
               description="Let players send messages in the room."
-              isSelected={chatEnabled}
+              isSelected={formData[ServerKeys.CHAT_ENABLED]}
               label="Enable Chat"
-              onValueChange={setChatEnabled}
+              onValueChange={handleSwitchChange(ServerKeys.CHAT_ENABLED)}
             />
 
             <Alert color="warning" />
