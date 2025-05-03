@@ -4,18 +4,16 @@ import {
 	UnauthorizedException,
 } from "@exceptions";
 import { Room, RoomPermission } from "@models";
+import type { JoinRoomInput } from "@root/src/dtos/rooms-schema.js";
 import { PlayerRoles, RoomPermissions, RoomStatus } from "@utils";
 import type { FastifyReply, FastifyRequest } from "fastify";
 
 // --- Join Room Controller ---
 export default async function joinRoomController(
-	request: FastifyRequest,
+	request: FastifyRequest<{ Body: JoinRoomInput }>,
 	reply: FastifyReply,
 ) {
-	const { room_id, room_password } = request.body as {
-		room_id: string;
-		room_password?: string;
-	};
+	const { room_id, room_password } = request.body;
 	const { user_id, username } = request.user;
 	const { log, io } = request;
 

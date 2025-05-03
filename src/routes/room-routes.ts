@@ -38,7 +38,7 @@ export default async function roomsRoutes(app: FastifyInstance) {
 	});
 
 	// --- Join Room ---
-	app.post("/join/:room_id", {
+	app.post("/join", {
 		schema: RoomRouteSchemas.joinRoomSchema,
 		handler: joinRoomController,
 	});

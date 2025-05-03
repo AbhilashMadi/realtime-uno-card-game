@@ -1,5 +1,5 @@
 import type { GetRoomDetailsParamsInput } from "@/dtos/rooms-schema.js";
-import { NotFoundException } from "@exceptions";
+import { ForbiddenException, NotFoundException } from "@exceptions";
 import { RoomPermission } from "@models";
 import { Room } from "@root/src/models/index.js";
 import type { FastifyReply, FastifyRequest } from "fastify";
@@ -21,6 +21,14 @@ export default async function getRoomDetailsController(
 		throw new NotFoundException(`Room with ID (${room_id}) not found.`);
 	}
 
+	const players = room.players.find((p) => p.user.toString() === user_id);
+	if (!players) {
+		log.warn(`Player(${user_id}) tried to join the room(${room_id})`);
+		throw new ForbiddenException(
+			`You are not part of this room with id: ${room_id}, Please join the room.`,
+		);
+	}
+
 	// 3. Find User's permissions in this Room
 	const permission = await RoomPermission.findOne({
 		room_id: room._id,
@@ -37,5 +45,6 @@ export default async function getRoomDetailsController(
 		room: room.toJSON(),
 		permission: permission ? permission.toJSON() : {},
 	};
+
 	return reply.success("", res);
 }
