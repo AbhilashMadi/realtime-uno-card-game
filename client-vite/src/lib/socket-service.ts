@@ -24,7 +24,7 @@ export class SocketService implements RoomOperations {
   private eventHandlers: Map<string, Set<EventHandler>> = new Map();
   private options: SocketOptions | null = null;
 
-  private constructor() { }
+  private constructor() {}
 
   // Get the singleton instance of SocketService
   public static getInstance(): SocketService {

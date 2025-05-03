@@ -14,7 +14,7 @@ export default async function getRoomDetailsController(
 	reply: FastifyReply,
 ) {
 	// 1. Get user details
-	const { user_id } = request.user;
+	const { user_id, username } = request.user;
 	const { room_id } = request.params;
 	const { log, io } = request;
 	const socketId = request.headers["x-socket-id"];
@@ -67,10 +67,11 @@ export default async function getRoomDetailsController(
 	log.info(`User(${user_id}) with socket(${socketId}) joined room(${room_id})`);
 
 	// Emit 'room:joined' event to all users in the room
-	io.to(room_id).emit("room:joined", {
+	io.to(room_id).emit("room:join", {
 		user_id,
-		socket_id: socketId,
 		room_id,
+		username,
+		message: `${username} Joined the room`,
 	});
 
 	// 6. Prepare response
