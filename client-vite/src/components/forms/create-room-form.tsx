@@ -57,11 +57,7 @@ const CreateRoomForm: FC<ICreateRoomForm> = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      await createRoom(formData);
-    } catch (error) {
-      console.log(error);
-    }
+    await createRoom(formData).catch((e) => console.error(e));
   };
 
   return (
