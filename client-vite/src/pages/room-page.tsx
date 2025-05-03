@@ -5,6 +5,10 @@ import envConfig from "@/config/env-config";
 import SocketService from "@/lib/socket-service";
 import { useGetRoomDetailsMutation } from "@/redux/services/room-api";
 import ServerKeys from "@/utils/server-keys";
+import GameLogsSection from "@/components/game-logs-section";
+import ChatSection from "@/components/chat-section";
+import GamePlaygroundSection from "@/components/game-playground-section";
+import CardsSection from "@/components/cards-section";
 
 const RoomPage: FC = () => {
   const { room_id } = useParams<{ room_id: string }>();
@@ -70,7 +74,14 @@ const RoomPage: FC = () => {
     };
   }, [room_id]);
 
-  return <section>ROOM: {room_id}</section>;
+  return (
+    <div className="grid grid-cols-4 grid-rows-3 gap-3 w-full">
+      <GameLogsSection />
+      <GamePlaygroundSection />
+      <ChatSection />
+      <CardsSection />
+    </div>
+  );
 };
 
 export default RoomPage;
