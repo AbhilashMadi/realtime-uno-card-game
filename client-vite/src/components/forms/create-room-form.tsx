@@ -57,6 +57,7 @@ const CreateRoomForm: FC<ICreateRoomForm> = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // eslint-disable-next-line no-console
     await createRoom(formData).catch((e) => console.error(e));
   };
 
