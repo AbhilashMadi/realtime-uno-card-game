@@ -65,6 +65,7 @@ export type JoinRoomResponseSchema = {
 
 export type GetRoomSchema = {
   [ServerKeys.ROOM_ID]: string;
+  [ServerKeys.SOCKET_ID]: string;
 };
 
 export type GetRoomResponseSchema = {

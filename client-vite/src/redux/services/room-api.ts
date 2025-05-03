@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+import envConfig from "@/config/env-config";
 import {
   CreateRoomFormSchema,
   CreateRoomResponseSchema,
@@ -12,7 +13,7 @@ import ServerKeys from "@/utils/server-keys";
 const roomApi = createApi({
   reducerPath: "roomApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8080/api/v1/rooms",
+    baseUrl: `${envConfig.BACKEND_BASE_URL}/rooms`,
     credentials: "include",
   }),
   endpoints: (build) => ({
@@ -30,9 +31,10 @@ const roomApi = createApi({
         body,
       }),
     }),
-    getRoomDetails: build.query<object, GetRoomSchema>({
+    getRoomDetails: build.mutation<object, GetRoomSchema>({
       query: (payload) => ({
         url: `/${payload?.[ServerKeys.ROOM_ID]}`,
+        headers: { "x-socket-id": payload?.[ServerKeys.SOCKET_ID] },
       }),
     }),
   }),
@@ -41,6 +43,6 @@ const roomApi = createApi({
 export const {
   useCreateRoomMutation,
   useJoinRoomMutation,
-  useGetRoomDetailsQuery,
+  useGetRoomDetailsMutation,
 } = roomApi;
 export default roomApi;

@@ -1,17 +1,10 @@
-import { type FC } from "react";
+import { FC } from "react";
 import { useParams } from "react-router-dom";
 
-import { useGetRoomDetailsQuery } from "@/redux/services/room-api";
-
 const RoomPage: FC = () => {
-  const { room_id } = useParams();
-  const { data } = useGetRoomDetailsQuery({
-    room_id: room_id!,
-  });
+  const { room_id } = useParams<{ room_id: string }>();
 
-  console.log(data);
-
-  return <section>Room Page: {room_id}</section>;
+  return <section>ROOM: {room_id}</section>;
 };
 
 export default RoomPage;

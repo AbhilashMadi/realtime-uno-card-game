@@ -7,6 +7,7 @@ import FloatingNav from "@/components/common/floating-nav";
 
 const PrivateLayout: FC = () => {
   const { autenticated } = useAuth();
+  // intialize socket instance
 
   return autenticated ? (
     <main className="p-4 min-h-dvh w-full bg-gray-900 dark:bg-white">

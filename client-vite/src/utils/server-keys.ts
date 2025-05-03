@@ -24,6 +24,7 @@ enum ServerKeys {
   PERMISSION = "permission",
   USER_ID = "user_id",
   ROLE = "role",
+  SOCKET_ID = "socket_id",
 }
 
 export default ServerKeys;

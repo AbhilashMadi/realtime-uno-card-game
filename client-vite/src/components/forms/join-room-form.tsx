@@ -32,6 +32,7 @@ const JoinRoomForm: FC<JoinRoomFormProps> = ({ isOpen, onClose }) => {
 
   const [joinRoom, { isLoading, isError, error, reset }] =
     useJoinRoomMutation();
+
   const navigate = useNavigate();
 
   const togglePasswordView = () => {
@@ -44,27 +45,35 @@ const JoinRoomForm: FC<JoinRoomFormProps> = ({ isOpen, onClose }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Resets the form and closes the modal
   const handleFormReset = () => {
     setFormData(initialFormData);
     reset();
     onClose();
   };
 
+  // Handles form submission
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await joinRoom(formData)
-      .unwrap()
-      .then(() => navigate(`/room/${formData?.[ServerKeys.ROOM_ID]}`))
+
+    try {
+      await joinRoom(formData).unwrap();
+      navigate(`/room/${formData[ServerKeys.ROOM_ID]}`);
+    } catch (error) {
       // eslint-disable-next-line no-console
-      .catch((e) => console.error(e));
+      console.error("Failed to join room with socket:", error);
+    }
   };
 
+  // Render the modal with the form
   return (
     <Modal backdrop="opaque" isOpen={isOpen} onClose={handleFormReset}>
       <ModalContent>
         <form onReset={handleFormReset} onSubmit={handleFormSubmit}>
+          {/* Modal header */}
           <ModalHeader className="flex flex-col gap-1">Join Room</ModalHeader>
           <ModalBody>
+            {/* Input for Room ID */}
             <Input
               isClearable
               isRequired
@@ -75,6 +84,7 @@ const JoinRoomForm: FC<JoinRoomFormProps> = ({ isOpen, onClose }) => {
               variant="bordered"
               onChange={handleFormChange}
             />
+            {/* Input for Room Password */}
             <Input
               endContent={
                 <button type="button" onClick={togglePasswordView}>
@@ -89,6 +99,7 @@ const JoinRoomForm: FC<JoinRoomFormProps> = ({ isOpen, onClose }) => {
               variant="bordered"
               onChange={handleFormChange}
             />
+            {/* Error alert if the joinRoom mutation fails */}
             {isError && (
               <Alert
                 color="danger"
@@ -99,6 +110,7 @@ const JoinRoomForm: FC<JoinRoomFormProps> = ({ isOpen, onClose }) => {
             )}
           </ModalBody>
           <ModalFooter>
+            {/* Cancel button */}
             <Button
               color="danger"
               disabled={isLoading}
@@ -108,6 +120,7 @@ const JoinRoomForm: FC<JoinRoomFormProps> = ({ isOpen, onClose }) => {
             >
               Cancel
             </Button>
+            {/* Submit button */}
             <Button color="primary" isLoading={isLoading} type="submit">
               Join Now
             </Button>
