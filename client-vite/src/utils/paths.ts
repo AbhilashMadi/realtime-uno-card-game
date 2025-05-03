@@ -6,6 +6,7 @@ enum Paths {
 
   // Private routes
   LANDING = "/",
+  ROOM = "/room/:room_id",
 }
 
 export default Paths;

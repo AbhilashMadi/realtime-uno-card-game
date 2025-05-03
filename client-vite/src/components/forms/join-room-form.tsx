@@ -1,43 +1,90 @@
+import { Alert } from "@heroui/alert";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import {
   Modal,
-  ModalContent,
-  ModalHeader,
   ModalBody,
+  ModalContent,
   ModalFooter,
+  ModalHeader,
 } from "@heroui/modal";
-import { useState, type FC } from "react";
-import { Alert } from "@heroui/alert";
+import { ChangeEvent, FormEvent, useState, type FC } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { EyeIcon } from "../icons";
+import { EyeIcon } from "@/components/icons";
+import { useJoinRoomMutation } from "@/redux/services/room-api";
+import { JoinRoomFormSchema } from "@/types/room-types";
+import ServerKeys from "@/utils/server-keys";
 
-interface IJoinRoomForm {
+interface JoinRoomFormProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const JoinRoomForm: FC<IJoinRoomForm> = ({ isOpen, onClose }) => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
+const initialFormData: JoinRoomFormSchema = {
+  [ServerKeys.ROOM_ID]: "",
+  [ServerKeys.ROOM_PASSWORD]: "",
+};
 
-  const togglePasswordView = (): void => {
-    setShowPassword(!showPassword);
+const JoinRoomForm: FC<JoinRoomFormProps> = ({ isOpen, onClose }) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState<JoinRoomFormSchema>(initialFormData);
+
+  const [joinRoom, { isLoading, isError, error, reset }] =
+    useJoinRoomMutation();
+
+  const navigate = useNavigate();
+
+  const togglePasswordView = () => {
+    setShowPassword((prev) => !prev);
   };
 
+  const handleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Resets the form and closes the modal
+  const handleFormReset = () => {
+    setFormData(initialFormData);
+    reset();
+    onClose();
+  };
+
+  // Handles form submission
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      await joinRoom(formData).unwrap();
+      navigate(`/room/${formData[ServerKeys.ROOM_ID]}`);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error("Failed to join room with socket:", error);
+    }
+  };
+
+  // Render the modal with the form
   return (
-    <Modal backdrop={"opaque"} isOpen={isOpen} onClose={onClose}>
+    <Modal backdrop="opaque" isOpen={isOpen} onClose={handleFormReset}>
       <ModalContent>
-        <form>
+        <form onReset={handleFormReset} onSubmit={handleFormSubmit}>
+          {/* Modal header */}
           <ModalHeader className="flex flex-col gap-1">Join Room</ModalHeader>
           <ModalBody>
+            {/* Input for Room ID */}
             <Input
               isClearable
               isRequired
               label="Room ID"
-              name="room_id"
+              name={ServerKeys.ROOM_ID}
               placeholder="e.g., 2T240LGW"
+              value={formData[ServerKeys.ROOM_ID]}
               variant="bordered"
+              onChange={handleFormChange}
             />
+            {/* Input for Room Password */}
             <Input
               endContent={
                 <button type="button" onClick={togglePasswordView}>
@@ -45,18 +92,36 @@ const JoinRoomForm: FC<IJoinRoomForm> = ({ isOpen, onClose }) => {
                 </button>
               }
               label="Room Password"
-              name="room_password"
+              name={ServerKeys.ROOM_PASSWORD}
               placeholder="Enter room password for access if it is private!"
               type={showPassword ? "text" : "password"}
+              value={formData[ServerKeys.ROOM_PASSWORD]}
               variant="bordered"
+              onChange={handleFormChange}
             />
-            <Alert color="danger" />
+            {/* Error alert if the joinRoom mutation fails */}
+            {isError && (
+              <Alert
+                color="danger"
+                description={
+                  (error as any)?.data?.error?.message || "Something went wrong"
+                }
+              />
+            )}
           </ModalBody>
           <ModalFooter>
-            <Button color="danger" variant="light" onPress={onClose}>
+            {/* Cancel button */}
+            <Button
+              color="danger"
+              disabled={isLoading}
+              type="reset"
+              variant="light"
+              onPress={handleFormReset}
+            >
               Cancel
             </Button>
-            <Button color="primary" onPress={onClose}>
+            {/* Submit button */}
+            <Button color="primary" isLoading={isLoading} type="submit">
               Join Now
             </Button>
           </ModalFooter>

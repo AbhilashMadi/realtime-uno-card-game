@@ -24,14 +24,14 @@ const socketIoPlugin: FastifyPluginAsync = fp(
 
 			// Setup connection listener
 			io.on("connection", (socket) => {
-				fastify.log.info(`New connection: ${socket.id}`);
+				fastify.log.info(`[SOCKET] New connection: ${socket.id}`);
 
 				socket.on("disconnect", () => {
-					fastify.log.info(`User disconnected: ${socket.id}`);
+					fastify.log.info(`[SOCKET] User disconnected: ${socket.id}`);
 				});
 
 				socket.on("error", (err) => {
-					fastify.log.error(`Socket error: ${err.message}`);
+					fastify.log.error(`[SOCKET] Socket error: ${err.message}`);
 				});
 			});
 

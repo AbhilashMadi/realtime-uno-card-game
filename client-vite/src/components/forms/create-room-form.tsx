@@ -1,6 +1,5 @@
-import { type FC, FormEvent, useState } from "react";
+import { ChangeEvent, type FC, FormEvent, useState } from "react";
 import { Input } from "@heroui/input";
-import { NumberInput } from "@heroui/number-input";
 import { Button } from "@heroui/button";
 import {
   Modal,
@@ -11,106 +10,140 @@ import {
 } from "@heroui/modal";
 import { Alert } from "@heroui/alert";
 
-import { EyeIcon } from "../icons";
-
+import { EyeIcon } from "@/components/icons";
 import LabeledSwitch from "@/components/custom/labeled-switch";
+import ServerKeys from "@/utils/server-keys";
+import { type CreateRoomFormSchema } from "@/types/room-types";
+import { useCreateRoomMutation } from "@/redux/services/room-api";
 
 interface ICreateRoomForm {
   isOpen: boolean;
   onClose: () => void;
 }
 
+const intialFormData: CreateRoomFormSchema = {
+  [ServerKeys.NAME]: "",
+  [ServerKeys.MAX_PLAYERS]: 2,
+  [ServerKeys.IS_PRIVATE]: true,
+  [ServerKeys.ROOM_PASSWORD]: "",
+  [ServerKeys.CHAT_ENABLED]: true,
+};
+
 const CreateRoomForm: FC<ICreateRoomForm> = ({ isOpen, onClose }) => {
-  const [isPrivate, setIsPrivate] = useState<boolean>(false);
-  const [chatEnabled, setChatEnabled] = useState<boolean>(true);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [createRoom, { isError, isLoading, error, reset }] =
+    useCreateRoomMutation();
+  const [formData, setFormData] =
+    useState<CreateRoomFormSchema>(intialFormData);
 
   const togglePasswordView = (): void => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData((pre) => ({ ...pre, [e.target.name]: e.target.value }));
+  };
 
-    const formData = new FormData(e.currentTarget);
-    const values = Object.fromEntries(formData.entries());
+  const handleSwitchChange = (name: ServerKeys) => {
+    return (value: boolean) =>
+      setFormData((pre) => ({ ...pre, [name]: value }));
+  };
 
-    values.is_private = isPrivate.toString();
-    values.chat_enabled = chatEnabled.toString();
-
-    console.log("Form Submission:", values);
+  const handleFormReset = (): void => {
+    setFormData(intialFormData);
+    reset();
     onClose();
   };
 
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // eslint-disable-next-line no-console
+    await createRoom(formData).catch((e) => console.error(e));
+  };
+
   return (
-    <Modal backdrop="opaque" isOpen={isOpen} onClose={onClose}>
+    <Modal backdrop="opaque" isOpen={isOpen} onClose={handleFormReset}>
       <ModalContent>
-        <form onSubmit={handleSubmit}>
+        <form onReset={handleFormReset} onSubmit={handleSubmit}>
           <ModalHeader className="flex flex-col gap-1">Create Room</ModalHeader>
           <ModalBody>
             <Input
               isClearable
               isRequired
               label="Room Name"
-              name="name"
+              maxLength={40}
+              minLength={6}
+              name={ServerKeys.NAME}
               placeholder="e.g., Strategy Squad, Chill Lounge"
+              value={formData[ServerKeys.NAME]}
               variant="bordered"
+              onChange={handleInputChange}
             />
-
-            <NumberInput
+            <Input
               isRequired
-              defaultValue={2}
               label="Maximum Players"
               max={10}
               min={2}
-              name="max_players"
+              name={ServerKeys.MAX_PLAYERS}
               placeholder="Choose a number between 2 and 10"
+              type="number"
+              value={String(formData[ServerKeys.MAX_PLAYERS])}
               variant="bordered"
+              onChange={handleInputChange}
             />
-
             <LabeledSwitch
               description="Only invited players can join if enabled."
-              isSelected={isPrivate}
+              isSelected={formData[ServerKeys.IS_PRIVATE]}
               label="Private Room"
-              onValueChange={setIsPrivate}
+              onValueChange={handleSwitchChange(ServerKeys.IS_PRIVATE)}
             />
-
-            {isPrivate && (
+            {formData[ServerKeys.IS_PRIVATE] && (
               <Input
                 isRequired
+                disabled={!formData[ServerKeys.IS_PRIVATE]}
                 endContent={
                   <button type="button" onClick={togglePasswordView}>
                     <EyeIcon open={showPassword} />
                   </button>
                 }
                 label="Room Password"
+                maxLength={12}
+                minLength={8}
                 name="room_password"
                 placeholder="Set a password for private access"
                 type={showPassword ? "text" : "password"}
+                value={formData[ServerKeys.ROOM_PASSWORD]}
                 variant="bordered"
+                onChange={handleInputChange}
               />
             )}
-
             <LabeledSwitch
               description="Let players send messages in the room."
-              isSelected={chatEnabled}
+              isSelected={formData[ServerKeys.CHAT_ENABLED]}
               label="Enable Chat"
-              onValueChange={setChatEnabled}
+              onValueChange={handleSwitchChange(ServerKeys.CHAT_ENABLED)}
             />
-
-            <Alert color="warning" />
+            {isError && (
+              <Alert
+                color="warning"
+                description={
+                  //@ts-ignore
+                  error?.data?.error?.message || "Something went wrong"
+                }
+              />
+            )}
           </ModalBody>
-
           <ModalFooter>
             <Button
               color="danger"
+              disabled={isLoading}
               type="reset"
               variant="flat"
-              onPress={onClose}
+              onPress={handleFormReset}
             >
               Cancel
             </Button>
-            <Button color="primary" type="submit">
+            <Button color="primary" isLoading={isLoading} type="submit">
               Create Now
             </Button>
           </ModalFooter>

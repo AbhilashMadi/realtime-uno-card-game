@@ -6,11 +6,12 @@ import {
   type UserSchema,
   type LoginSchema,
 } from "@/types/auth-types";
+import envConfig from "@/config/env-config";
 
 const authApi = createApi({
   reducerPath: "auth_api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8080/api/v1/auth",
+    baseUrl: `${envConfig.BACKEND_BASE_URL}/auth`,
     method: "POST",
     credentials: "include",
   }),
