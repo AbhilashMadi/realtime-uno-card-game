@@ -13,7 +13,7 @@ import { LoginSchema } from "@/types/auth-types";
 const LoginForm: FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
-  const [login, { isLoading, isError, data, error }] = useLoginMutation();
+  const [login, { isLoading, isError, error }] = useLoginMutation();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

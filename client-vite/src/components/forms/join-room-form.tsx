@@ -55,6 +55,7 @@ const JoinRoomForm: FC<JoinRoomFormProps> = ({ isOpen, onClose }) => {
     await joinRoom(formData)
       .unwrap()
       .then(() => navigate(`/room/${formData?.[ServerKeys.ROOM_ID]}`))
+      // eslint-disable-next-line no-console
       .catch((e) => console.error(e));
   };
 
