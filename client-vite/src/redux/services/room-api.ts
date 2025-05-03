@@ -3,9 +3,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
   CreateRoomFormSchema,
   CreateRoomResponseSchema,
+  GetRoomSchema,
   JoinRoomFormSchema,
   JoinRoomResponseSchema,
 } from "@/types/room-types";
+import ServerKeys from "@/utils/server-keys";
 
 const roomApi = createApi({
   reducerPath: "roomApi",
@@ -28,8 +30,17 @@ const roomApi = createApi({
         body,
       }),
     }),
+    getRoomDetails: build.query<object, GetRoomSchema>({
+      query: (payload) => ({
+        url: `/${payload?.[ServerKeys.ROOM_ID]}`,
+      }),
+    }),
   }),
 });
 
-export const { useCreateRoomMutation, useJoinRoomMutation } = roomApi;
+export const {
+  useCreateRoomMutation,
+  useJoinRoomMutation,
+  useGetRoomDetailsQuery,
+} = roomApi;
 export default roomApi;

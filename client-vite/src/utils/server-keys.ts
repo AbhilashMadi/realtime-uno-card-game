@@ -20,6 +20,10 @@ enum ServerKeys {
   USERNAME = "username",
   JOINED_AT = "joined_at",
   PERMISSIONS = "permissions",
+  ROOM = "room",
+  PERMISSION = "permission",
+  USER_ID = "user_id",
+  ROLE = "role",
 }
 
 export default ServerKeys;

@@ -1,6 +1,7 @@
 import RoomPermissionsEnum from "@/utils/room-permissions";
 import RoomStatus from "@/utils/room-status";
 import ServerKeys from "@/utils/server-keys";
+import UserRoles from "@/utils/user-roles";
 
 export type CreateRoomFormSchema = {
   [ServerKeys.NAME]: string;
@@ -52,12 +53,31 @@ export type JoinRoomResponseSchema = {
   [ServerKeys.SUCCESS]: boolean;
   [ServerKeys.MESSAGE]: string;
   [ServerKeys.DATA]: {
-    [ServerKeys.ROOM_ID]: "8L01LU64";
-    [ServerKeys.NAME]: "Room No 1";
+    [ServerKeys.ROOM_ID]: string;
+    [ServerKeys.NAME]: string;
     [ServerKeys.MAX_PLAYERS]: 3;
     [ServerKeys.PLAYERS]: JoinedPlayerSchema[];
     [ServerKeys.CHAT_MESSAGES]: ChatMessageSchema[];
     [ServerKeys.PERMISSIONS]: RoomPermissionsEnum;
+  };
+  [ServerKeys.TIMESTAMP]: string;
+};
+
+export type GetRoomSchema = {
+  [ServerKeys.ROOM_ID]: string;
+};
+
+export type GetRoomResponseSchema = {
+  [ServerKeys.SUCCESS]: boolean;
+  [ServerKeys.MESSAGE]: string;
+  [ServerKeys.DATA]: {
+    [ServerKeys.ROOM]: JoinRoomResponseSchema;
+    [ServerKeys.PERMISSION]: {
+      [ServerKeys.ROOM_ID]: string;
+      [ServerKeys.USER_ID]: string;
+      [ServerKeys.ROLE]: UserRoles;
+      [ServerKeys.PERMISSIONS]: RoomPermissionsEnum;
+    };
   };
   [ServerKeys.TIMESTAMP]: string;
 };
