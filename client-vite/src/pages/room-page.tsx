@@ -5,7 +5,7 @@ import { useGetRoomDetailsQuery } from "@/redux/services/room-api";
 
 const RoomPage: FC = () => {
   const { room_id } = useParams();
-  const { error, isFetching, data } = useGetRoomDetailsQuery({
+  const { data } = useGetRoomDetailsQuery({
     room_id: room_id!,
   });
 
