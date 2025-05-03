@@ -7,8 +7,17 @@
   --font-mono: "Space Grotesk", sans-serif;
 }
 
+/* 
+ * Avatar Sprite Sheet Utility Classes (Tailwind version)
+ * 
+ * For a sprite sheet with:
+ * - Total size: 620px (width) × 740px (height)
+ * - Avatar size: 100px × 100px
+ * - Grid: 6 columns × 5 rows (30 avatars total)
+ */
+
 @layer utilities {
   .flex-center {
-    @apply flex items-center justify-center;
+    @apply flex justify-center items-center;
   }
 }

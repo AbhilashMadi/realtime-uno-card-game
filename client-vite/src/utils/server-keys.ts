@@ -4,6 +4,22 @@ enum ServerKeys {
   IS_PRIVATE = "is_private",
   ROOM_PASSWORD = "room_password",
   CHAT_ENABLED = "chat_enabled",
+  ROOM_ID = "room_id",
+  SUCCESS = "success",
+  MESSAGE = "message",
+  DATA = "data",
+  HOST = "host",
+  STATUS = "status",
+  LOGS = "logs",
+  PLAYERS = "players",
+  CHAT_MESSAGES = "chat_messages",
+  CREATED_AT = "created_at",
+  UPDATED_AT = "updated_at",
+  TIMESTAMP = "timestamp",
+  USER = "user",
+  USERNAME = "username",
+  JOINED_AT = "joined_at",
+  PERMISSIONS = "permissions",
 }
 
 export default ServerKeys;

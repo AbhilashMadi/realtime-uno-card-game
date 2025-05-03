@@ -21,6 +21,8 @@ const LandingPage: FC = () => {
         isOpen={isCreateRoomModalOpen}
         onClose={onCreateRoomModalClose}
       />
+      <div className="avatar avatar-1" />
+      <div className="avatar avatar-2" />
       <article
         aria-label="UNO Game Lobby Actions"
         className="flex justify-center items-center gap-12 w-full"

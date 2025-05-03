@@ -57,7 +57,11 @@ const CreateRoomForm: FC<ICreateRoomForm> = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await createRoom(formData);
+    try {
+      await createRoom(formData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -135,6 +139,7 @@ const CreateRoomForm: FC<ICreateRoomForm> = ({ isOpen, onClose }) => {
           <ModalFooter>
             <Button
               color="danger"
+              disabled={isLoading}
               type="reset"
               variant="flat"
               onPress={handleFormReset}
