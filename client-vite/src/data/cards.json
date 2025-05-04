@@ -1,0 +1,502 @@
+[
+  {
+    "id": "red_3_a",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "3"
+  },
+  {
+    "id": "green_3_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "3"
+  },
+  {
+    "id": "red_8_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "8"
+  },
+  {
+    "id": "blue_9_b",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "9"
+  },
+  {
+    "id": "wilddrawfour_d",
+    "color": "radial-gradient(circle,rgba(105, 105, 105, 1) 0%, rgba(61, 61, 61, 1) 100%)",
+    "value": "wild_draw_four"
+  },
+  {
+    "id": "green_skip_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "skip"
+  },
+  {
+    "id": "blue_8_b",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "8"
+  },
+  {
+    "id": "blue_drawtwo_b",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "draw_two"
+  },
+  {
+    "id": "red_1_a",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "1"
+  },
+  {
+    "id": "red_6_a",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "6"
+  },
+  {
+    "id": "green_4_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "4"
+  },
+  {
+    "id": "blue_reverse_b",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "reverse"
+  },
+  {
+    "id": "yellow_8_b",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "8"
+  },
+  {
+    "id": "yellow_skip_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "skip"
+  },
+  {
+    "id": "blue_6_a",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "6"
+  },
+  {
+    "id": "red_2_a",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "2"
+  },
+  {
+    "id": "green_9_a",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "9"
+  },
+  {
+    "id": "blue_7_b",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "7"
+  },
+  {
+    "id": "red_0",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "0"
+  },
+  {
+    "id": "blue_8_a",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "8"
+  },
+  {
+    "id": "yellow_reverse_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "reverse"
+  },
+  {
+    "id": "yellow_drawtwo_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "draw_two"
+  },
+  {
+    "id": "blue_reverse_a",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "reverse"
+  },
+  {
+    "id": "blue_1_a",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "1"
+  },
+  {
+    "id": "red_skip_a",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "skip"
+  },
+  {
+    "id": "wild_c",
+    "color": "radial-gradient(circle,rgba(105, 105, 105, 1) 0%, rgba(61, 61, 61, 1) 100%)",
+    "value": "wild"
+  },
+  {
+    "id": "red_skip_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "skip"
+  },
+  {
+    "id": "blue_4_a",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "4"
+  },
+  {
+    "id": "red_4_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "4"
+  },
+  {
+    "id": "green_6_a",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "6"
+  },
+  {
+    "id": "yellow_5_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "5"
+  },
+  {
+    "id": "green_2_a",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "2"
+  },
+  {
+    "id": "yellow_1_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "1"
+  },
+  {
+    "id": "green_2_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "2"
+  },
+  {
+    "id": "yellow_reverse_b",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "reverse"
+  },
+  {
+    "id": "red_5_a",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "5"
+  },
+  {
+    "id": "blue_skip_b",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "skip"
+  },
+  {
+    "id": "green_8_a",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "8"
+  },
+  {
+    "id": "red_6_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "6"
+  },
+  {
+    "id": "blue_0",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "0"
+  },
+  {
+    "id": "yellow_6_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "6"
+  },
+  {
+    "id": "red_7_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "7"
+  },
+  {
+    "id": "green_4_a",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "4"
+  },
+  {
+    "id": "wilddrawfour_b",
+    "color": "radial-gradient(circle,rgba(105, 105, 105, 1) 0%, rgba(61, 61, 61, 1) 100%)",
+    "value": "wild_draw_four"
+  },
+  {
+    "id": "green_1_a",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "1"
+  },
+  {
+    "id": "red_7_a",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "7"
+  },
+  {
+    "id": "green_7_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "7"
+  },
+  {
+    "id": "green_5_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "5"
+  },
+  {
+    "id": "blue_5_b",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "5"
+  },
+  {
+    "id": "yellow_0",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "0"
+  },
+  {
+    "id": "red_9_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "9"
+  },
+  {
+    "id": "blue_7_a",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "7"
+  },
+  {
+    "id": "yellow_2_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "2"
+  },
+  {
+    "id": "green_6_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "6"
+  },
+  {
+    "id": "green_drawtwo_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "draw_two"
+  },
+  {
+    "id": "wild_a",
+    "color": "radial-gradient(circle,rgba(105, 105, 105, 1) 0%, rgba(61, 61, 61, 1) 100%)",
+    "value": "wild"
+  },
+  {
+    "id": "yellow_9_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "9"
+  },
+  {
+    "id": "red_drawtwo_a",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "draw_two"
+  },
+  {
+    "id": "blue_9_a",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "9"
+  },
+  {
+    "id": "blue_1_b",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "1"
+  },
+  {
+    "id": "red_1_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "1"
+  },
+  {
+    "id": "red_3_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "3"
+  },
+  {
+    "id": "green_7_a",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "7"
+  },
+  {
+    "id": "blue_6_b",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "6"
+  },
+  {
+    "id": "green_3_a",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "3"
+  },
+  {
+    "id": "red_reverse_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "reverse"
+  },
+  {
+    "id": "red_9_a",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "9"
+  },
+  {
+    "id": "yellow_8_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "8"
+  },
+  {
+    "id": "green_0",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "0"
+  },
+  {
+    "id": "red_5_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "5"
+  },
+  {
+    "id": "blue_5_a",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "5"
+  },
+  {
+    "id": "red_2_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "2"
+  },
+  {
+    "id": "green_8_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "8"
+  },
+  {
+    "id": "blue_3_a",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "3"
+  },
+  {
+    "id": "yellow_3_b",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "3"
+  },
+  {
+    "id": "yellow_9_b",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "9"
+  },
+  {
+    "id": "yellow_1_b",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "1"
+  },
+  {
+    "id": "yellow_4_b",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "4"
+  },
+  {
+    "id": "yellow_skip_b",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "skip"
+  },
+  {
+    "id": "blue_2_b",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "2"
+  },
+  {
+    "id": "green_drawtwo_a",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "draw_two"
+  },
+  {
+    "id": "yellow_7_b",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "7"
+  },
+  {
+    "id": "red_drawtwo_b",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "draw_two"
+  },
+  {
+    "id": "green_1_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "1"
+  },
+  {
+    "id": "blue_drawtwo_a",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "draw_two"
+  },
+  {
+    "id": "yellow_3_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "3"
+  },
+  {
+    "id": "wild_d",
+    "color": "radial-gradient(circle,rgba(105, 105, 105, 1) 0%, rgba(61, 61, 61, 1) 100%)",
+    "value": "wild"
+  },
+  {
+    "id": "yellow_6_b",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "6"
+  },
+  {
+    "id": "yellow_5_b",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "5"
+  },
+  {
+    "id": "wild_b",
+    "color": "radial-gradient(circle,rgba(105, 105, 105, 1) 0%, rgba(61, 61, 61, 1) 100%)",
+    "value": "wild"
+  },
+  {
+    "id": "yellow_4_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "4"
+  },
+  {
+    "id": "green_reverse_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "reverse"
+  },
+  {
+    "id": "green_9_b",
+    "color": "linear-gradient(90deg,rgba(0, 255, 123, 1) 0%, rgba(0, 255, 166, 1) 100%)",
+    "value": "9"
+  },
+  {
+    "id": "wilddrawfour_a",
+    "color": "radial-gradient(circle,rgba(105, 105, 105, 1) 0%, rgba(61, 61, 61, 1) 100%)",
+    "value": "wild_draw_four"
+  },
+  {
+    "id": "yellow_2_b",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "2"
+  },
+  {
+    "id": "yellow_7_a",
+    "color": "radial-gradient(circle,rgba(196, 170, 0, 1) 0%, rgba(236, 240, 0, 1) 100%)",
+    "value": "7"
+  },
+  {
+    "id": "wilddrawfour_c",
+    "color": "radial-gradient(circle,rgba(105, 105, 105, 1) 0%, rgba(61, 61, 61, 1) 100%)",
+    "value": "wild_draw_four"
+  },
+  {
+    "id": "blue_3_b",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "3"
+  },
+  {
+    "id": "blue_2_a",
+    "color": "radial-gradient(circle,rgba(0, 30, 181, 1) 0%, rgba(0, 152, 240, 1) 100%)",
+    "value": "2"
+  },
+  {
+    "id": "red_reverse_a",
+    "color": "radial-gradient(circle,rgba(196, 0, 0, 1) 0%, rgba(240, 104, 0, 1) 100%)",
+    "value": "reverse"
+  }
+]
